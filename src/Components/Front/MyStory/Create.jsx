@@ -4,10 +4,7 @@ import Photo from './Photo';
 
 
 function Create() {
-  const { setCreateData } = useContext(FrontContext);
-
-  const fileInput = useRef();
-  const [image, setImage] = useState(null);
+  const { fileInput, image, setImage, setCreateData } = useContext(FrontContext);
 
   const [text, setText] = useState('');
   const [targetSum, setTargetSum] = useState('');
@@ -33,11 +30,11 @@ function Create() {
         <div className='form create front'>
           <div className='feedback com'>
             <form className='flex'>
-              <label>Present your ideas:</label>
+              <label>Present your idea:</label>
               <textarea
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                placeholder='Write your comment here...'
+                placeholder='Write your story or idea here...'
               ></textarea>
               <label style={{ marginTop: '15px' }}>Enter target Sum:</label>
               <input style={{ maxWidth: '100px' }}

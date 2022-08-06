@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer } from 'react';
+import { useEffect, useState, useReducer, useRef } from 'react';
 import Reducer from './Reducer';
 import FrontContext from './FrontContext';
 import Nav from './Nav';
@@ -10,6 +10,10 @@ import axios from 'axios';
 function Front({ show }) {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [message, setMessage] = useState(null);
+
+  const fileInput = useRef();
+  const [image, setImage] = useState(null);
+
 
   const [createData, setCreateData] = useState(null);
 
@@ -103,6 +107,9 @@ function Front({ show }) {
   return (
     <FrontContext.Provider
       value={{
+        fileInput,
+        image,
+        setImage,
         message,
         showMessage,
         stories,

@@ -1,13 +1,10 @@
 import { useContext } from 'react';
-import { useRef, useState } from 'react';
 import getBase64 from '../../../Functions/getBase64';
 import FrontContext from '../FrontContext';
 
 function Photo() {
-  const { showMessage } = useContext(FrontContext);
+  const { fileInput, image, setImage, showMessage } = useContext(FrontContext);
 
-  const fileInput = useRef();
-  const [image, setImage] = useState(null);
 
   const showImage = () => {
     getBase64(fileInput.current.files[0])

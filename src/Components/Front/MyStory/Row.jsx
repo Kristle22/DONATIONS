@@ -30,7 +30,7 @@ function Row({ row }) {
           {givers && givers.filter(g => g.story_id === row.id).map((g, i) => <h4 key={i}>{g.name}: {g.sum} Eur.</h4>)}
         </div>
         {row.sum_remaining === 0 ?
-          <p className='heading' style={{ color: 'gold' }}>The required amount has already been collected. Thank you for your donation!</p> :
+          <div className='img small'><p className='heading' style={{ color: 'gold' }}>The required amount has already been collected.</p> <img src={require('../../../img/donation.png')} alt='donation' /></div> :
           <Donate row={row} />
         }
       </div>
