@@ -124,7 +124,7 @@ app.post("/login", (req, res) => {
 app.get('/istorijos', (req, res) => {
   const sql = `
   SELECT
-  s.id, text, photo, target_sum, sum_donated, sum_remaining, status, g.id AS givId, name, sum, story_id
+  s.id, text, photo, target_sum, sum_donated, sum_remaining, status, archive, g.id AS givId, name, sum, story_id
   FROM story AS s
   LEFT JOIN givers AS g
   ON s.id = g.story_id
@@ -179,7 +179,7 @@ app.post('/aukotojai', (req, res) => {
 app.put('/auka/:id', (req, res) => {
   const sql = `
   UPDATE story 
-  SET sum_donated =sum_donated + ?, sum_remaining = sum_remaining - ?
+  SET sum_donated = sum_donated + ?, sum_remaining = sum_remaining - ?
   WHERE id = ?
         `;
   con.query(sql, [req.body.donateSum, req.body.donateSum, req.params.id], (err, result) => {
@@ -201,15 +201,16 @@ app.put('/statusas/:id', (req, res) => {
   });
 });
 
-// DELETE Story BACK
-app.delete('/istorijos/:id', (req, res) => {
+// ARCHIVE Story BACK
+app.put('/archyvas/:id', (req, res) => {
   const sql = `
-  DELETE FROM story
+  UPDATE story
+  SET archive = 1
   WHERE id = ?
   `;
   con.query(sql, [req.params.id], (err, result) => {
     if (err) throw err;
-    res.send({ result, msg: { text: 'Istorija istrinta is saraso', type: 'danger' } });
+    res.send({ result, msg: { text: 'Istorija patalpinta i archyva', type: 'danger' } });
   })
 });
 

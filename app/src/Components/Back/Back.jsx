@@ -14,7 +14,7 @@ function Back({ show }) {
 
   const [status, setStatus] = useState(0);
 
-  const [deleteStory, setDeleteStory] = useState(null);
+  const [archive, setArchive] = useState(0);
 
   const showMessage = (mes) => {
     setMessage(mes);
@@ -36,15 +36,15 @@ function Back({ show }) {
 
   // Delete Story
   useEffect(() => {
-    if (null === deleteStory) return;
+    if (null === archive) return;
     axios
-      .delete('http://localhost:3003/istorijos/' + deleteStory.id, authConfig())
+      .put('http://localhost:3003/archyvas/' + archive.id, archive, authConfig())
       .then((res) => {
-        console.log(deleteStory);
+        console.log(archive);
         showMessage(res.data.msg);
         setLastUpdate(Date.now());
       });
-  }, [deleteStory]);
+  }, [archive]);
 
   // Edit STATUS
   useEffect(() => {
@@ -63,7 +63,7 @@ function Back({ show }) {
         stories,
         message,
         setStatus,
-        setDeleteStory,
+        setArchive,
       }}
     >
       {show === 'admin' ? (

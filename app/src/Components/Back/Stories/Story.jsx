@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import BackContext from '../BackContext';
 
 function Order({ story }) {
-  const { setDeleteStory, setStatus } = useContext(BackContext);
+  const { setStatus, setArchive } = useContext(BackContext);
 
   const storyId = story.id;
   const handleConfirm = () => {
@@ -10,7 +10,7 @@ function Order({ story }) {
   };
 
   const handleDelete = () => {
-    setDeleteStory({ id: storyId });
+    setArchive({ id: storyId });
   };
 
   return (

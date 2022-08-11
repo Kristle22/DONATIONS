@@ -16,7 +16,7 @@ function List() {
           <h5>Sum Donated</h5>
           <h5>Remaining Sum</h5>
         </div>
-        {stories ? stories.map((s) => <Story key={s.id} story={s} />) : null}
+        {stories && stories.map((s) => s.archive === 1 ? null : <Story key={s.id} story={s} />)}
       </div>
     </>
   );
