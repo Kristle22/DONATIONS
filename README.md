@@ -4,7 +4,13 @@
 ![Eco Status](https://img.shields.io/badge/ECO-Friendly-green.svg)
 
 # DONATIONS
+
 Donations server project
+
+Public domain site design: ![donations](./server/img/donations_add-story.png)
+![donations](./server/img/donations_add-story.png)
+
+Administrative domain site design: ![donations](./server/img/donations_adm-stories.png)
 
 _To launch this project in your browser, you should follow the steps below_
 
